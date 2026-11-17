@@ -255,6 +255,114 @@
       footer .wrap { padding-top: 36px; padding-bottom: 36px; display: flex; flex-wrap: wrap; gap: 14px 32px; align-items: baseline; }
       footer .fname { font-family: "DM Serif Display", Georgia, serif; font-size: 1.4rem; color: #fff; }
       footer p { font-size: 0.9rem; }
+
+      /* ---------- faq bot ---------- */
+      .faqbot-launch {
+        position: fixed; right: 18px; bottom: 18px; z-index: 60;
+        display: inline-flex; align-items: center; gap: 9px;
+        min-height: 52px; padding: 12px 20px 12px 16px; border-radius: 999px;
+        background: var(--sea-deep); color: #fff; border: 1px solid rgba(201,164,92,0.65);
+        box-shadow: 0 12px 30px rgba(0, 25, 56, 0.32);
+        font: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+      }
+      .faqbot-launch:hover { background: #0a2a52; }
+      .faqbot-launch svg { width: 22px; height: 22px; stroke: var(--gold); flex: 0 0 auto; }
+      .faqbot-launch[aria-expanded="true"] { display: none; }
+      .faqbot-panel {
+        position: fixed; right: 18px; bottom: 18px; z-index: 61;
+        width: min(384px, calc(100vw - 24px));
+        height: min(600px, calc(100dvh - 36px));
+        display: none; flex-direction: column; overflow: hidden;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+        box-shadow: 0 24px 60px rgba(0, 25, 56, 0.35);
+      }
+      .faqbot-panel.open { display: flex; }
+      @media (max-width: 480px) { .faqbot-panel { right: 12px; bottom: 12px; } .faqbot-launch { right: 12px; bottom: 12px; } }
+      .faqbot-head {
+        background: var(--sea-deep); color: #fff; padding: 16px 18px;
+        display: flex; align-items: flex-start; gap: 12px; flex: 0 0 auto;
+      }
+      .faqbot-head h2 { font-size: 1.25rem; color: #fff; }
+      .faqbot-head p { color: #c6d3e4; font-size: 0.85rem; margin-top: 3px; line-height: 1.45; }
+      .faqbot-close {
+        margin-left: auto; flex: 0 0 auto; width: 40px; height: 40px; min-height: 40px;
+        border-radius: 50%; border: 1px solid rgba(255,255,255,0.35); background: transparent;
+        color: #fff; font-size: 1.25rem; line-height: 1; cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center;
+      }
+      .faqbot-close:hover { background: rgba(255,255,255,0.14); }
+      .faqbot-msgs {
+        flex: 1 1 auto; overflow-y: auto; padding: 16px 14px 8px;
+        display: flex; flex-direction: column; gap: 10px; overscroll-behavior: contain;
+      }
+      .faqbot-msg {
+        max-width: 88%; padding: 11px 14px; border-radius: 14px;
+        font-size: 0.93rem; line-height: 1.55; overflow-wrap: anywhere;
+      }
+      .faqbot-msg.bot { background: var(--surface-2); color: var(--ink); border-bottom-left-radius: 4px; align-self: flex-start; }
+      .faqbot-msg.user { background: var(--sea); color: #fff; border-bottom-right-radius: 4px; align-self: flex-end; }
+      @media (prefers-color-scheme: dark) { .faqbot-msg.user { color: #06201f; } }
+      .faqbot-msg a { font-weight: 700; }
+      .faqbot-msg.bot a { color: var(--sea); }
+      .faqbot-brief {
+        display: inline-flex; align-items: center; min-height: 40px; margin-top: 10px;
+        background: var(--gold); color: #001938 !important; text-decoration: none;
+        border-radius: 9px; padding: 8px 14px; font-weight: 700; font-size: 0.9rem;
+      }
+      .faqbot-brief:hover { filter: brightness(1.07); }
+      .faqbot-topics-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+      .faqbot-topics-head p { margin-bottom: 0; }
+      .faqbot-topic-pick { display: inline-flex; align-items: center; gap: 7px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+      .faqbot-topic-pick select {
+        font: inherit; font-size: 0.85rem; font-weight: 600; text-transform: none; letter-spacing: normal;
+        color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
+        padding: 6px 8px; min-height: 38px; max-width: 168px;
+      }
+      .faqbot-mail {
+        display: inline-flex; align-items: center; min-height: 40px; margin: 10px 8px 0 0;
+        background: var(--surface); color: var(--sea) !important; border: 1.5px solid var(--sea);
+        text-decoration: none; border-radius: 9px; padding: 8px 14px; font-weight: 700; font-size: 0.9rem;
+      }
+      .faqbot-mail:hover { border-color: var(--gold); }
+      .faqbot-note { font-size: 0.82rem; color: var(--ink-soft); margin-top: 8px; line-height: 1.5; }
+      .faqbot-signup { display: flex; gap: 8px; margin-top: 10px; }
+      .faqbot-signup input {
+        flex: 1 1 auto; min-width: 0; font: inherit; font-size: 0.92rem; color: var(--ink);
+        background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; min-height: 42px;
+      }
+      .faqbot-signup button {
+        flex: 0 0 auto; min-height: 42px; padding: 9px 14px; border: 0; border-radius: 9px;
+        background: var(--sea); color: #fff; font: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer;
+      }
+      .faqbot-signup button:hover { background: var(--sea-deep); }
+      @media (prefers-color-scheme: dark) { .faqbot-signup button { color: #06201f; } .faqbot-signup button:hover { color: #06201f; } }
+      .faqbot-topics { flex: 0 0 auto; padding: 8px 14px 4px; border-top: 1px solid var(--line); }
+      .faqbot-topics p { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 8px; }
+      .faqbot-chips { display: flex; flex-wrap: wrap; gap: 7px; max-height: 118px; overflow-y: auto; padding-bottom: 6px; }
+      .faqbot-chips button {
+        font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+        background: var(--chip-bg); color: var(--ink); border: 1px solid transparent;
+        border-radius: 999px; padding: 7px 13px; min-height: 38px; text-align: left;
+      }
+      .faqbot-chips button:hover { border-color: var(--gold); }
+      .faqbot-form {
+        flex: 0 0 auto; display: flex; gap: 8px; padding: 10px 12px 12px;
+        border-top: 1px solid var(--line); background: var(--surface);
+      }
+      .faqbot-form input {
+        flex: 1 1 auto; min-width: 0; font: inherit; font-size: 0.95rem; color: var(--ink);
+        background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-height: 46px;
+      }
+      .faqbot-form button {
+        flex: 0 0 auto; min-height: 46px; padding: 10px 18px; border: 0; border-radius: 10px;
+        background: var(--sea); color: #fff; font: inherit; font-weight: 700; cursor: pointer;
+      }
+      .faqbot-form button:hover { background: var(--sea-deep); }
+      @media (prefers-color-scheme: dark) { .faqbot-form button { color: #06201f; } .faqbot-form button:hover { color: #06201f; } }
+      @media (prefers-reduced-motion: no-preference) {
+        .faqbot-panel.open { animation: faqbot-in 0.18s ease-out; }
+        @keyframes faqbot-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+      }
     </style>
   </head>
   <body>
@@ -645,9 +753,9 @@
               <span class="contact-label">Support</span>
               <span class="contact-addr">support@ocltravel.com</span>
             </a>
-            <a class="contact-card" href="mailto:help@ocltravel.com">
+            <a class="contact-card" href="mailto:phardman@ocltravel.com">
               <span class="contact-label">Help</span>
-              <span class="contact-addr">help@ocltravel.com</span>
+              <span class="contact-addr">phardman@ocltravel.com</span>
             </a>
             <a class="contact-card" href="tel:+13058147009">
               <span class="contact-label">Office</span>
@@ -698,6 +806,40 @@
         <p><a href="https://ocltravel.com" target="_blank" rel="noopener" style="color:#fff">ocltravel.com</a> · <a href="mailto:info@ocltravel.com" style="color:#fff">info@ocltravel.com</a> · Office: <a href="tel:+13058147009" style="color:#fff">+1 (305) 814-7009</a> · Start with the <a href="#brief" style="color:#fff">trip brief</a> — it takes two minutes.</p>
       </div>
     </footer>
+
+    <!-- FAQ bot: built into this page, answers set questions, no external service -->
+    <button class="faqbot-launch" id="faqbotLaunch" type="button" aria-expanded="false" aria-controls="faqbotPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.4 0-2.8-.3-4-.9L3 20l.9-5.5A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 10.5h7"/><path d="M8.5 13.5h4.5"/></svg>
+      Ask a question
+    </button>
+
+    <div class="faqbot-panel" id="faqbotPanel" role="dialog" aria-modal="false" aria-labelledby="faqbotTitle" aria-hidden="true">
+      <div class="faqbot-head">
+        <div>
+          <h2 id="faqbotTitle">Quick answers</h2>
+          <p>Ask about offers, booking, payments or support — browse the topics or type your question.</p>
+        </div>
+        <button class="faqbot-close" id="faqbotClose" type="button" aria-label="Close chat">&times;</button>
+      </div>
+      <div class="faqbot-msgs" id="faqbotMsgs" aria-live="polite"></div>
+      <div class="faqbot-topics">
+        <div class="faqbot-topics-head">
+          <p id="faqbotTopicsLabel">Popular questions</p>
+          <label class="faqbot-topic-pick">Topic
+            <select id="faqbotTopic" aria-label="Choose a question topic">
+              <option value="popular" selected>Popular</option>
+              <option value="all">All questions</option>
+            </select>
+          </label>
+        </div>
+        <div class="faqbot-chips" id="faqbotChips"></div>
+      </div>
+      <form class="faqbot-form" id="faqbotForm">
+        <label class="faqbot-sr" for="faqbotInput" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;">Type your question</label>
+        <input id="faqbotInput" type="text" placeholder="Type your question…" autocomplete="off" maxlength="300" />
+        <button type="submit">Send</button>
+      </form>
+    </div>
 
     <script>
       // Journey filters
@@ -767,6 +909,220 @@
           document.body.removeChild(ta);
         }
       });
+    </script>
+
+    <script>
+      // FAQ bot — 100 set questions answered locally in the page; no external service.
+      // Answers that need the agency open a pre-addressed email, routed by intent:
+      // bookings and sales to book@ocltravel.com, support and help to
+      // support@ocltravel.com, general enquiries to info@ocltravel.com.
+      (function () {
+        var FAQS = [{"id": 1, "q": "Does it cost more to book through an agency?", "keys": ["cost", "price", "fee", "agency", "expensive", "cheaper", "book", "direct"], "a": "Usually not. Cruise lines and most hotels pay agencies a commission out of the price you'd pay booking direct, so the fare you see is typically the same — with an advisor's planning on top. If a planning fee ever applies to a complex custom itinerary, you'll know before any work starts. Start with the trip brief (#brief) or email book@ocltravel.com.", "sales": false, "topic": "Booking"}, {"id": 2, "q": "How far ahead should I start planning my trip?", "keys": ["when", "ahead", "early", "plan", "months", "book"], "a": "For cruises and peak-season trips, 6–12 months out gets you the best cabin and room choices, and Alaska and the Greek Isles reward early booking most. That said, good trips come together in a few weeks too — the trip brief takes two minutes, so start it whenever you're ready (#brief).", "sales": false, "topic": "Booking"}, {"id": 3, "q": "How does planning a trip with OCL Travel work?", "keys": ["how", "works", "process", "plan", "steps", "advisor"], "a": "Three steps: send a trip brief (where, when, who's going, roughly what you'd like to spend — two minutes, no commitment); your advisor comes back with a short list of real, priced options and a recommendation, including the trade-offs; then we handle deposits, deadlines and documents, and while you travel you have one person to call if plans change. Start at the trip brief (#brief).", "sales": false, "topic": "Booking"}, {"id": 4, "q": "What cruise offers do you have right now?", "keys": ["offers", "deals", "discounts", "sale", "promotion", "cruise", "current"], "a": "Our current offers are listed in the offers section (#offers) — they include Virgin Voyages, Norwegian, Uniworld, Princess, Oceania, Lindblad, HX and Regent Seven Seas, and they change regularly. Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability and the current price for your dates.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Current cruise offers", "body": "Hi OCL Travel,\n\nI'd like help with this: What cruise offers do you have right now?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 5, "q": "Can you book just part of my trip?", "keys": ["part", "partial", "only", "flight", "cruise", "hotel", "piece"], "a": "Yes. Plenty of travellers book their own flights and ask us for the cruise, the land itinerary, or the tricky transfers in between. Tell us what you've already arranged in the trip brief and we'll build around it (#brief).", "sales": false, "topic": "Booking"}, {"id": 6, "q": "What if something goes wrong while I'm travelling?", "keys": ["wrong", "problem", "help", "emergency", "travelling", "support", "stuck"], "a": "You call us, not a call centre. We rebook, reroute and deal with suppliers while you get on with your day — that's a large part of what an agency is for. Call the office on +1 (305) 814-7009, or email support@ocltravel.com.", "sales": false, "topic": "Contact", "to": "support@ocltravel.com", "subj": "Help while travelling", "body": "Hi OCL Travel support,\n\nI need help with this: What if something goes wrong while I'm travelling?\n\nMy details:\nName: \nBooking reference / trip details: \n\nThanks!"}, {"id": 7, "q": "Do I need travel insurance?", "keys": ["insurance", "travel insurance", "cover", "medical", "cancellation"], "a": "We recommend it for almost every trip, especially cruises and international travel — medical cover abroad and cancellation protection are the two pieces that matter most. We'll explain the options that fit your trip; the choice is always yours. Ask about it in your trip brief (#brief) or email book@ocltravel.com.", "sales": false, "topic": "Insurance"}, {"id": 8, "q": "What destinations and journeys do you plan?", "keys": ["destinations", "journeys", "where", "places", "trips", "travel"], "a": "Six starting points: Caribbean by Sea (7-night cruise), Mérida & the Yucatán (5–7 days), Greek Isles & the Aegean (9–12 days), Alaska's Inside Passage (7-night cruise), Maldives, Slowly (5–10 nights), and Riviera Maya & Cenote Country (6–8 days). Every one is shaped around your dates, your pace and who you're travelling with — see the journeys section (#journeys).", "sales": false, "topic": "Journeys"}, {"id": 9, "q": "Can you plan a group trip or celebration?", "keys": ["group", "celebration", "birthday", "reunion", "family", "honeymoon", "party"], "a": "Yes — reunions, milestone birthdays, honeymoons and multi-generational trips are a core part of what we do, with group rates and logistics handled so one person isn't herding everyone. Send a trip brief (#brief) or email book@ocltravel.com with your dates and party size.", "sales": true, "topic": "Groups", "to": "book@ocltravel.com", "subj": "Group trip or celebration", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you plan a group trip or celebration?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 10, "q": "What services does OCL Travel offer?", "keys": ["services", "what", "do", "offer", "help", "agency"], "a": "Cruises (ocean and river sailings, cabin selection, dining and drink packages, shore days planned port by port); custom itineraries (multi-stop land journeys built from scratch); groups & celebrations; and flights, stays and transfers sequenced around your trip. See the services section, or email info@ocltravel.com with a general question.", "sales": false, "topic": "About OCL", "to": "info@ocltravel.com", "subj": "General enquiry — services", "body": "Hi OCL Travel,\n\nI have a question: What services does OCL Travel offer?\n\nMy details:\nName: \n\nThanks!"}, {"id": 11, "q": "How much deposit do I need to pay?", "keys": ["deposit", "pay", "payment", "upfront", "down"], "a": "Deposit amounts vary by supplier and by sailing, so there's no single figure — the amount is confirmed when your booking is priced. Email book@ocltravel.com and we'll confirm the deposit for your sailing.", "sales": false, "topic": "Payments"}, {"id": 12, "q": "How do I contact OCL Travel?", "keys": ["contact", "email", "phone", "call", "reach", "address"], "a": "General enquiries go to info@ocltravel.com, bookings to book@ocltravel.com, and support to support@ocltravel.com — or call the office on +1 (305) 814-7009. The website is ocltravel.com.", "sales": false, "topic": "Contact"}, {"id": 13, "q": "How much does a Caribbean cruise cost?", "keys": ["caribbean", "cruise", "price", "cost", "quote", "how much"], "a": "It depends on the ship, cabin and sailing date — our Caribbean by Sea journey is a 7-night cruise, and your advisor prices real options for your dates rather than quoting a generic fare. Send a trip brief (#brief) or email book@ocltravel.com for a quote.", "sales": true, "topic": "Cruises", "to": "book@ocltravel.com", "subj": "Quote request — Caribbean cruise", "body": "Hi OCL Travel,\n\nI'd like help with this: How much does a Caribbean cruise cost?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 14, "q": "What's the difference between an inside, oceanview and balcony cabin?", "keys": ["cabin", "inside", "oceanview", "balcony", "suite", "room", "cabin type"], "a": "Generally: inside cabins have no window and cost least; oceanview cabins add a window; balcony cabins add private outdoor space. Which is worth it depends on how much time you'll spend in the cabin and how you sleep — your advisor will weigh it honestly for your sailing. Ask in your trip brief (#brief).", "sales": false, "topic": "Cruises"}, {"id": 15, "q": "Which Caribbean cruise route is better — Eastern or Western?", "keys": ["caribbean", "eastern", "western", "route", "itinerary", "ports"], "a": "Both are offered on our Caribbean by Sea journey, and the better pick depends on the ports you want — Eastern routes lean to beach and island ports, Western routes to Maya culture and snorkelling, generally speaking. Tell us what matters to you in the trip brief (#brief) and we'll match the route.", "sales": false, "topic": "Cruises"}, {"id": 16, "q": "What's included in a cruise fare?", "keys": ["included", "fare", "price", "meals", "what", "cruise"], "a": "Generally, your cruise fare covers the cabin, main dining, entertainment and port taxes, while drinks packages, speciality dining, gratuities, shore excursions and Wi-Fi are usually extra or optional. Exactly what's included varies by line and sailing — your advisor confirms it before you book. Email book@ocltravel.com with your sailing in mind.", "sales": false, "topic": "Cruises"}, {"id": 17, "q": "Do I need a passport for a Caribbean cruise?", "keys": ["passport", "caribbean", "cruise", "documents", "id"], "a": "Generally yes — a valid passport is the safest document for any cruise, including Caribbean sailings, and many countries require it to be valid for six months beyond your return. We check documents before you go, so email book@ocltravel.com or mention it in your trip brief (#brief) and we'll confirm for your sailing.", "sales": false, "topic": "Documents"}, {"id": 18, "q": "What is there to do on a cruise ship?", "keys": ["do", "activities", "onboard", "ship", "entertainment", "fun"], "a": "Generally: pools and sun decks, shows and live music, restaurants and bars, spas, gyms, kids' clubs and enrichment talks, plus port days ashore. What's on board varies by ship, so tell us your style in the trip brief (#brief) and we'll match the ship to it.", "sales": false, "topic": "Cruises"}, {"id": 19, "q": "Are drinks packages worth it?", "keys": ["drinks", "package", "alcohol", "beverage", "worth", "bar"], "a": "It depends on how much you drink — packages generally pay off for regular drinkers and rarely do for light drinkers, and most lines price them per person, per day. Your advisor will weigh the package honestly against your sailing's prices before you book. Ask in your trip brief (#brief).", "sales": false, "topic": "Cruises"}, {"id": 20, "q": "How do gratuities work on a cruise?", "keys": ["gratuities", "tips", "tipping", "service charge", "crew"], "a": "Most cruise lines add a daily service charge per person, which you can usually prepay or settle on board, and some fares include gratuities already. The exact amount varies by line and cabin, so your advisor confirms it before you book — email book@ocltravel.com.", "sales": false, "topic": "Cruises"}, {"id": 21, "q": "Can I cruise if I get seasick?", "keys": ["seasick", "sick", "motion", "sea", "nausea", "rough"], "a": "Generally yes — a midship cabin on a lower deck moves least, larger ships feel steadier, and over-the-counter remedies help most people. Tell us in your trip brief (#brief) and we'll pick a cabin position that suits how you travel.", "sales": false, "topic": "Cruises"}, {"id": 22, "q": "What should I pack for a cruise?", "keys": ["pack", "packing", "luggage", "bring", "what", "cruise"], "a": "Generally: a passport and documents, swimwear and light layers, one smarter outfit for formal nights, comfortable shoes for port days, sunscreen, and any medication in hand luggage. Your advisor sends a trip-specific checklist once you're booked — email book@ocltravel.com.", "sales": false, "topic": "Cruises"}, {"id": 23, "q": "Are cruises good for kids?", "keys": ["kids", "children", "family", "baby", "young", "cruise"], "a": "Generally yes — most larger ships have kids' clubs, pools and family activities, and family cabins or connecting rooms. The right line depends on your kids' ages, so tell us in the trip brief (#brief) and we'll match the ship to your family.", "sales": false, "topic": "Cruises"}, {"id": 24, "q": "Can I cruise with a wheelchair or mobility needs?", "keys": ["wheelchair", "mobility", "accessible", "disability", "accessible cabin"], "a": "Generally yes — most lines offer accessible cabins and assisted boarding, but availability is limited and varies by ship. Tell us your needs early in the trip brief (#brief) so we can check the right cabin and arrangements with the line.", "sales": false, "topic": "Cruises"}, {"id": 25, "q": "What is a guarantee cabin?", "keys": ["guarantee", "cabin", "guaranteed", "category", "stateroom"], "a": "Generally, a guarantee cabin means the line picks your exact cabin within a category, usually at a lower fare, and you find out the cabin number closer to sailing. It's a good deal if you're flexible about location — your advisor can check guarantee fares for your sailing. Email book@ocltravel.com.", "sales": false, "topic": "Cruises"}, {"id": 26, "q": "When is the best time to cruise Alaska?", "keys": ["alaska", "best time", "when", "season", "months", "cruise"], "a": "Late May to early September is the full Alaska cruise season, and our Alaska's Inside Passage journey is a 7-night sailing in that window. Tell us your dates in the trip brief (#brief) and we'll check what's sailing.", "sales": false, "topic": "Cruises"}, {"id": 27, "q": "What's the difference between Glacier Bay and Hubbard Glacier routes?", "keys": ["glacier bay", "hubbard glacier", "alaska", "route", "glacier"], "a": "Our Alaska journey notes that choosing between Glacier Bay and Hubbard Glacier routes matters more than the ship does — both are spectacular glacier cruising, with different scenery and wildlife chances. Tell us your dates in the trip brief (#brief) and we'll compare the routes sailing then.", "sales": false, "topic": "Cruises"}, {"id": 28, "q": "Can I add a Denali land tour to an Alaska cruise?", "keys": ["denali", "alaska", "land", "add-on", "tour", "rail"], "a": "Yes — our Alaska's Inside Passage journey offers an optional Denali land add-on by rail. Send a trip brief (#brief) or email book@ocltravel.com with your dates and we'll price the cruise-plus-Denali combination.", "sales": true, "topic": "Cruises", "to": "book@ocltravel.com", "subj": "Alaska cruise + Denali add-on", "body": "Hi OCL Travel,\n\nI'd like help with this: Can I add a Denali land tour to an Alaska cruise?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 29, "q": "What is a river cruise?", "keys": ["river", "cruise", "uniworld", "danube", "rhine", "europe"], "a": "A river cruise sails inland waterways on a smaller ship, docking in the heart of towns — our river partner Uniworld currently offers 50% cruise savings for a second guest (see #offers). Email book@ocltravel.com and we'll explain the routes and check availability.", "sales": false, "topic": "Cruises"}, {"id": 30, "q": "How do I book the Virgin Voyages Black Friday Preview Sale?", "keys": ["virgin", "voyages", "black friday", "sale", "drinks", "sailor"], "a": "Virgin Voyages' Black Friday Preview Sale offers up to $600 in free drinks plus 80% off a second sailor — see the offer in the offers section (#offers). Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability and book it for you.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Virgin Voyages Black Friday Preview Sale", "body": "Hi OCL Travel,\n\nI'd like help with this: How do I book the Virgin Voyages Black Friday Preview Sale?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 31, "q": "What is the Norwegian Cruise Line offer?", "keys": ["norwegian", "ncl", "offer", "discount", "stateroom"], "a": "Norwegian Cruise Line offers up to $1,000 off per stateroom — the offer notes a Book by Nov 18 deadline, so check the offers section (#offers) for the current status. Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability for your dates.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Norwegian Cruise Line offer", "body": "Hi OCL Travel,\n\nI'd like help with this: What is the Norwegian Cruise Line offer?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 32, "q": "What is the Princess Cruises offer?", "keys": ["princess", "offer", "discount", "savings", "guests"], "a": "Princess Cruises offers up to 50% off plus up to $400 instant savings, 50% deposits and free 3rd & 4th guests on select voyages — see the offers section (#offers). Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability for your dates.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Princess Cruises offer", "body": "Hi OCL Travel,\n\nI'd like help with this: What is the Princess Cruises offer?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 33, "q": "What is the Oceania Cruises offer?", "keys": ["oceania", "offer", "2027", "single", "supplement", "solo"], "a": "Oceania Cruises has two offers on our offers page (#offers): up to 50% savings on all 2027 voyages, and 50% off the single supplement on select sailings. Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability for your dates.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Oceania Cruises offer", "body": "Hi OCL Travel,\n\nI'd like help with this: What is the Oceania Cruises offer?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 34, "q": "What is the Uniworld offer?", "keys": ["uniworld", "river", "offer", "second guest", "savings"], "a": "Uniworld offers 50% cruise savings for a second guest — see the offers section (#offers). Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability and the current price for your dates.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Uniworld offer", "body": "Hi OCL Travel,\n\nI'd like help with this: What is the Uniworld offer?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 35, "q": "What is the Lindblad Expeditions offer?", "keys": ["lindblad", "expedition", "offer", "credit", "nature"], "a": "Lindblad Expeditions offers up to 20% off plus a $1,500 future credit — see the offers section (#offers). Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability for your dates.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Lindblad Expeditions offer", "body": "Hi OCL Travel,\n\nI'd like help with this: What is the Lindblad Expeditions offer?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 36, "q": "What is the HX (Hurtigruten Expeditions) offer?", "keys": ["hx", "hurtigruten", "expedition", "offer", "discount"], "a": "HX (Hurtigruten Expeditions) offers savings of up to 40% — see the offers section (#offers). Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability for your dates.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "HX Hurtigruten Expeditions offer", "body": "Hi OCL Travel,\n\nI'd like help with this: What is the HX (Hurtigruten Expeditions) offer?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 37, "q": "What is the Regent Seven Seas offer?", "keys": ["regent", "seven seas", "offer", "suite", "shipboard credit"], "a": "Regent Seven Seas offers up to 40% off plus $500 shipboard credit per suite on select sailings — see the offers section (#offers). Email book@ocltravel.com or call +1 (305) 814-7009 and we'll check availability for your dates.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Regent Seven Seas offer", "body": "Hi OCL Travel,\n\nI'd like help with this: What is the Regent Seven Seas offer?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 38, "q": "How do I sign up for special offers?", "keys": ["sign up", "special offers", "offers", "email list", "subscribe", "newsletter", "alerts", "deals"], "a": "You can get our special offers by email. Share your email address and we'll generate a message to info@ocltravel.com — send it from your own mail client and we'll add you to the list. You can also browse the latest offers anytime in the offers section (#offers).", "sales": false, "topic": "Offers", "to": "info@ocltravel.com", "subj": "Special offers signup", "body": "Hi OCL Travel,\n\nPlease add me to your special offers list.\n\nMy email address: [your email address]\n\nThanks!", "signup": true}, {"id": 39, "q": "Are there any deals or discounts right now?", "keys": ["deals", "discounts", "cheap", "cheapest", "sale", "bargain", "latest offers"], "a": "Yes — our current offers are listed in the offers section (#offers), including Virgin Voyages, Norwegian, Princess, Oceania and more, and they change regularly. Email book@ocltravel.com or call +1 (305) 814-7009 for the current price on your dates — and you can sign up for special offers by email so you don't miss the next ones.", "sales": true, "topic": "Offers", "to": "book@ocltravel.com", "subj": "Current deals and discounts", "body": "Hi OCL Travel,\n\nI'd like help with this: Are there any deals or discounts right now?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 40, "q": "How do I get alerts for the latest offers?", "keys": ["alerts", "latest offers", "notify", "new offers", "updates", "special offers"], "a": "Sign up for our special offers by email — share your email address and we'll generate a message to info@ocltravel.com; send it from your own mail client and we'll add you to the list. You can also check the offers section (#offers) anytime for what's current.", "sales": false, "topic": "Offers", "to": "info@ocltravel.com", "subj": "Special offers signup", "body": "Hi OCL Travel,\n\nPlease add me to your special offers list.\n\nMy email address: [your email address]\n\nThanks!"}, {"id": 41, "q": "Tell me about the Mérida & the Yucatán journey", "keys": ["mérida", "yucatán", "yucatan", "mexico", "colonial", "maya", "cenotes"], "a": "A 5–7 day land journey based in Mérida, with day trips radiating out — colonial streets, Maya cities, and cenotes you can swim in before breakfast. Uxmal and Chichén Itzá with a private guide, cenote swims and hacienda lunches, flamingos at Celestún and the yellow town of Izamal. Best months are November to March — see the journeys section (#journeys) or the 7-day sample itinerary.", "sales": false, "topic": "Journeys"}, {"id": 42, "q": "What does the 7-day Yucatán sample itinerary look like?", "keys": ["yucatán", "yucatan", "itinerary", "sample", "7-day", "week", "mérida"], "a": "Day by day: arrive in Mérida and an evening paseo around the Plaza Grande; Old Mérida on foot; Uxmal and the Puuc route; cenotes and Izamal; Chichén Itzá early; Celestún and the coast for flamingos; then a slow last morning and home. See the full day-by-day spotlight on the site, or send a trip brief (#brief) to shape it around your dates.", "sales": false, "topic": "Journeys"}, {"id": 43, "q": "Tell me about the Greek Isles & the Aegean journey", "keys": ["greek", "isles", "aegean", "santorini", "mykonos", "athens", "greece"], "a": "A 9–12 day cruise-plus-land journey: sail the Greek Isles, then stay on in Athens and Santorini, so the islands aren't just a four-hour port call. Athens and the Acropolis before you embark, Santorini, Mykonos, Rhodes and Crete, with caldera-view stays in Oia or Fira. Best months are May, June and September — see #journeys.", "sales": false, "topic": "Journeys"}, {"id": 44, "q": "How much does the Yucatán trip cost?", "keys": ["yucatán", "yucatan", "mérida", "price", "cost", "quote", "how much"], "a": "It depends on your dates, hotel style and whether you add a private guide — the Mérida & the Yucatán journey is a 5–7 day land trip, and your advisor prices real options for your dates. Send a trip brief (#brief) or email book@ocltravel.com for a quote.", "sales": true, "topic": "Journeys", "to": "book@ocltravel.com", "subj": "Quote request — Mérida & the Yucatán", "body": "Hi OCL Travel,\n\nI'd like help with this: How much does the Yucatán trip cost?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 45, "q": "Can you build a custom itinerary from scratch?", "keys": ["custom", "itinerary", "build", "bespoke", "tailor-made", "from scratch"], "a": "Yes — multi-stop land journeys built from scratch: routing, hotels, guides, transfers and realistic drive times, not a pin dropped on a map. Send a trip brief (#brief) or email book@ocltravel.com with where you'd like to go.", "sales": true, "topic": "Journeys", "to": "book@ocltravel.com", "subj": "Custom itinerary request", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you build a custom itinerary from scratch?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 46, "q": "Can you plan a honeymoon?", "keys": ["honeymoon", "romantic", "wedding", "just married"], "a": "Yes — honeymoons are part of our groups & celebrations service, and we handle the details so you don't have to. Tell us your dates and dream in the trip brief (#brief) or email book@ocltravel.com.", "sales": true, "topic": "Groups", "to": "book@ocltravel.com", "subj": "Honeymoon planning", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you plan a honeymoon?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 47, "q": "Can you plan a multi-stop trip?", "keys": ["multi-stop", "multi", "stops", "several", "places", "combine"], "a": "Yes — that's what our custom itineraries are for: multi-stop land journeys with routing, hotels, guides and transfers planned around realistic drive times. Send a trip brief (#brief) and tell us the places you'd like to combine.", "sales": false, "topic": "Journeys"}, {"id": 48, "q": "I want to go somewhere else — can you help?", "keys": ["somewhere else", "other", "destination", "different", "place", "anywhere"], "a": "Yes — the trip brief has a 'Somewhere else' option for exactly that. Tell us where you're thinking of in the brief (#brief), or email info@ocltravel.com and we'll tell you what we can do.", "sales": false, "topic": "Journeys", "to": "info@ocltravel.com", "subj": "General enquiry — another destination", "body": "Hi OCL Travel,\n\nI have a question: I want to go somewhere else — can you help?\n\nMy details:\nName: \n\nThanks!"}, {"id": 49, "q": "How much does a custom itinerary cost?", "keys": ["custom", "itinerary", "price", "cost", "quote", "how much", "bespoke"], "a": "It depends on the routing, hotels and guides — custom itineraries are priced per trip, and your advisor gives you real, priced options with the trade-offs of each. Send a trip brief (#brief) or email book@ocltravel.com for a quote.", "sales": true, "topic": "Booking", "to": "book@ocltravel.com", "subj": "Quote request — custom itinerary", "body": "Hi OCL Travel,\n\nI'd like help with this: How much does a custom itinerary cost?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 50, "q": "Do you offer group rates?", "keys": ["group", "rates", "discount", "group rate", "large group", "party"], "a": "Yes — group rates and logistics are handled for reunions, milestone birthdays, honeymoons and multi-generational trips, so one person isn't herding everyone. Email book@ocltravel.com with your dates and party size, or send a trip brief (#brief).", "sales": true, "topic": "Groups", "to": "book@ocltravel.com", "subj": "Group rates enquiry", "body": "Hi OCL Travel,\n\nI'd like help with this: Do you offer group rates?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 51, "q": "Can you plan a milestone birthday trip?", "keys": ["birthday", "milestone", "50th", "60th", "celebration", "party"], "a": "Yes — milestone birthdays are part of our groups & celebrations service, with group rates and logistics handled. Send a trip brief (#brief) or email book@ocltravel.com with your dates and party size.", "sales": true, "topic": "Groups", "to": "book@ocltravel.com", "subj": "Milestone birthday trip", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you plan a milestone birthday trip?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 52, "q": "Can you plan a family reunion?", "keys": ["reunion", "family", "get together", "gathering", "relatives"], "a": "Yes — reunions are part of our groups & celebrations service, with group rates and logistics handled so one person isn't herding everyone. Send a trip brief (#brief) or email book@ocltravel.com with your dates and party size.", "sales": true, "topic": "Groups", "to": "book@ocltravel.com", "subj": "Family reunion trip", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you plan a family reunion?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 53, "q": "Can you plan a multi-generational family trip?", "keys": ["multi-generational", "generations", "grandparents", "family", "all ages"], "a": "Yes — multi-generational trips are part of our groups & celebrations service, with group rates and logistics handled. Send a trip brief (#brief) or email book@ocltravel.com with your dates and party size.", "sales": true, "topic": "Groups", "to": "book@ocltravel.com", "subj": "Multi-generational family trip", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you plan a multi-generational family trip?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 54, "q": "How many people make a group?", "keys": ["how many", "group", "size", "people", "minimum", "number"], "a": "There's no single number on our site — the trip brief lists 'Group of friends (5+)' as an option, and group rates vary by supplier. Email book@ocltravel.com with your party size and dates and we'll check what applies.", "sales": false, "topic": "Groups"}, {"id": 55, "q": "Can you book my flights?", "keys": ["flights", "flight", "book flights", "airfare", "plane"], "a": "Yes — flights are sequenced around your cruise or tour, and we handle the details with the rest of the trip. Send a trip brief (#brief) or email book@ocltravel.com with your route and dates.", "sales": true, "topic": "Flights & stays", "to": "book@ocltravel.com", "subj": "Flight booking request", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you book my flights?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 56, "q": "Can you arrange a hotel before or after my cruise?", "keys": ["hotel", "before", "after", "pre-cruise", "post-cruise", "night", "stay"], "a": "Yes — pre- and post-cruise hotel nights are arranged as part of the trip, in the right neighbourhood for your port. Tell us your sailing in the trip brief (#brief) or email book@ocltravel.com.", "sales": false, "topic": "Flights & stays"}, {"id": 57, "q": "Can you arrange airport transfers?", "keys": ["transfer", "airport", "shuttle", "taxi", "transport", "pickup"], "a": "Yes — transfers are part of our custom itineraries and trip planning, including the airport transfer on our Yucatán sample itinerary. Mention it in your trip brief (#brief) or email book@ocltravel.com.", "sales": false, "topic": "Flights & stays"}, {"id": 58, "q": "Can you book a hotel only, without a cruise?", "keys": ["hotel only", "just hotel", "room", "accommodation", "stay"], "a": "Hotels are arranged as part of a trip — in the right neighbourhood, sequenced around your cruise or tour. Email book@ocltravel.com with your destination and dates and we'll tell you what we can do.", "sales": false, "topic": "Flights & stays"}, {"id": 59, "q": "Do you arrange travel between the airport and the hotel in Mérida?", "keys": ["mérida", "airport", "transfer", "hotel", "transport", "arrival"], "a": "Yes — transfers are included in our Yucatán planning, including the airport transfer on the sample itinerary. Send a trip brief (#brief) or email book@ocltravel.com with your arrival details.", "sales": false, "topic": "Flights & stays"}, {"id": 60, "q": "Can you book flights and a cruise together?", "keys": ["flights", "cruise", "together", "package", "combine", "fly-cruise"], "a": "Yes — flights are sequenced around your cruise, with hotels and transfers arranged around them. Send a trip brief (#brief) or email book@ocltravel.com with your route and dates and we'll price the combination.", "sales": true, "topic": "Flights & stays", "to": "book@ocltravel.com", "subj": "Flights + cruise package", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you book flights and a cruise together?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 61, "q": "How do I pay for my trip?", "keys": ["pay", "payment", "how to pay", "card", "methods", "deposit"], "a": "We handle deposits, deadlines and documents as part of booking — the exact payment details are confirmed when your trip is priced. Email book@ocltravel.com and we'll confirm the payment details for your booking.", "sales": false, "topic": "Payments"}, {"id": 62, "q": "When is the deposit due?", "keys": ["deposit", "due", "when", "deadline", "pay"], "a": "Deposit amounts and deadlines vary by supplier and sailing, so they're confirmed when your booking is priced — there's no single figure. Email book@ocltravel.com and we'll confirm the deposit for your sailing.", "sales": false, "topic": "Payments"}, {"id": 63, "q": "When is the final payment due?", "keys": ["final payment", "balance", "due", "when", "deadline"], "a": "Final payment deadlines vary by supplier and sailing, so they're confirmed when your booking is priced. Email book@ocltravel.com and we'll confirm the deadline for your sailing.", "sales": false, "topic": "Payments"}, {"id": 64, "q": "Do you charge a planning fee?", "keys": ["planning fee", "fee", "charge", "extra", "cost"], "a": "If a planning fee applies to a complex custom itinerary, you'll know before any work starts. Ask in your trip brief (#brief) or email book@ocltravel.com.", "sales": false, "topic": "Payments"}, {"id": 65, "q": "Can I pay in instalments?", "keys": ["instalments", "installments", "pay", "monthly", "split", "payment plan"], "a": "That depends on the supplier and the sailing, so there's no single answer — email book@ocltravel.com with your booking in mind and we'll confirm what's possible.", "sales": false, "topic": "Payments"}, {"id": 66, "q": "Can I change my booking after it's made?", "keys": ["change", "amend", "modify", "booking", "alter", "switch"], "a": "Usually, yes — changes depend on the supplier's terms for your booking, so email support@ocltravel.com with your booking details and we'll check what's possible and any cost before you decide.", "sales": false, "topic": "Booking", "to": "support@ocltravel.com", "subj": "Change to my booking", "body": "Hi OCL Travel support,\n\nI need help with this: Can I change my booking after it's made?\n\nMy details:\nName: \nBooking reference / trip details: \n\nThanks!"}, {"id": 67, "q": "What is the cancellation policy?", "keys": ["cancel", "cancellation", "policy", "refund", "cancel trip"], "a": "Cancellation terms vary by supplier and by booking, so they're confirmed when your trip is priced — there's no single policy. Email support@ocltravel.com with your booking details and we'll confirm the terms that apply to you.", "sales": false, "topic": "Booking", "to": "support@ocltravel.com", "subj": "Cancellation question", "body": "Hi OCL Travel support,\n\nI need help with this: What is the cancellation policy?\n\nMy details:\nName: \nBooking reference / trip details: \n\nThanks!"}, {"id": 68, "q": "Can I cancel my cruise?", "keys": ["cancel", "cruise", "refund", "cancel cruise"], "a": "Cancellation terms vary by cruise line and by sailing, so they're confirmed when your booking is priced. Email support@ocltravel.com with your booking details and we'll confirm the terms and any refund that applies.", "sales": false, "topic": "Booking", "to": "support@ocltravel.com", "subj": "Cancelling my cruise", "body": "Hi OCL Travel support,\n\nI need help with this: Can I cancel my cruise?\n\nMy details:\nName: \nBooking reference / trip details: \n\nThanks!"}, {"id": 69, "q": "What happens if my flight is cancelled?", "keys": ["flight", "cancelled", "delay", "delayed", "disruption", "missed"], "a": "You call us, not a call centre — we rebook and reroute while you get on with your day. Call the office on +1 (305) 814-7009, or email support@ocltravel.com.", "sales": false, "topic": "Flights & stays", "to": "support@ocltravel.com", "subj": "Flight cancelled or delayed", "body": "Hi OCL Travel support,\n\nI need help with this: What happens if my flight is cancelled?\n\nMy details:\nName: \nBooking reference / trip details: \n\nThanks!"}, {"id": 70, "q": "What if I need to change my travel dates?", "keys": ["change", "dates", "move", "postpone", "reschedule", "shift"], "a": "Date changes depend on the supplier's terms for your booking, so email support@ocltravel.com with your booking details and we'll check what's possible before you decide.", "sales": false, "topic": "Booking", "to": "support@ocltravel.com", "subj": "Change of travel dates", "body": "Hi OCL Travel support,\n\nI need help with this: What if I need to change my travel dates?\n\nMy details:\nName: \nBooking reference / trip details: \n\nThanks!"}, {"id": 71, "q": "Do I need a passport to travel?", "keys": ["passport", "need", "travel", "documents", "required"], "a": "Generally yes for international travel — a valid passport is the standard document, and many countries require it to be valid for six months beyond your return. We check documents before you go, so mention it in your trip brief (#brief) or email book@ocltravel.com.", "sales": false, "topic": "Documents"}, {"id": 72, "q": "Do I need a visa for Mexico?", "keys": ["visa", "mexico", "mérida", "yucatán", "entry", "requirements"], "a": "It depends on your nationality — generally, many nationalities don't need a visa for a tourist visit to Mexico, but requirements vary. Email book@ocltravel.com with your nationality and we'll confirm what applies to your trip.", "sales": false, "topic": "Documents"}, {"id": 73, "q": "Do I need a visa for Greece?", "keys": ["visa", "greece", "greek", "schengen", "europe", "entry"], "a": "It depends on your nationality — Greece is in the Schengen area, and visa requirements vary. Email book@ocltravel.com with your nationality and we'll confirm what applies to your trip.", "sales": false, "topic": "Documents"}, {"id": 74, "q": "What travel documents should I check before I go?", "keys": ["documents", "check", "passport", "visa", "before", "travel"], "a": "We check documents before you go as part of the booking — passport validity, any visas, and the requirements for your destinations. Mention your trip in the trip brief (#brief) or email book@ocltravel.com and we'll go through it with you.", "sales": false, "topic": "Documents"}, {"id": 75, "q": "Do children need their own passports?", "keys": ["children", "kids", "passport", "child", "baby", "documents"], "a": "Generally yes — children usually need their own passport for international travel, including cruises. We check documents before you go, so email book@ocltravel.com and we'll confirm for your family.", "sales": false, "topic": "Documents"}, {"id": 76, "q": "What if I lose my passport while travelling?", "keys": ["lose", "lost", "passport", "stolen", "travelling", "emergency"], "a": "Contact us straight away — you call us, not a call centre, and we'll help you rebook and reroute while you sort the replacement. Call the office on +1 (305) 814-7009, or email support@ocltravel.com.", "sales": false, "topic": "Documents", "to": "support@ocltravel.com", "subj": "Lost passport while travelling", "body": "Hi OCL Travel support,\n\nI need help with this: What if I lose my passport while travelling?\n\nMy details:\nName: \nBooking reference / trip details: \n\nThanks!"}, {"id": 77, "q": "What does travel insurance cover?", "keys": ["insurance", "cover", "covered", "what", "policy", "claim"], "a": "Generally, the two pieces that matter most are medical cover abroad and cancellation protection — we recommend insurance for almost every trip, especially cruises and international travel. We'll explain the options that fit your trip; email book@ocltravel.com to ask about them.", "sales": false, "topic": "Insurance"}, {"id": 78, "q": "Is travel insurance included in my booking?", "keys": ["insurance", "included", "booking", "cover"], "a": "Insurance isn't listed as included in our trips — it's something we explain and arrange as an option for your trip. Email book@ocltravel.com and we'll confirm what's included in your booking.", "sales": false, "topic": "Insurance"}, {"id": 79, "q": "Can you arrange travel insurance for me?", "keys": ["arrange", "insurance", "get", "buy", "travel insurance"], "a": "Yes — travel insurance options are explained as part of planning your trip, and we'll go through the options that fit. Email book@ocltravel.com or mention it in your trip brief (#brief).", "sales": false, "topic": "Insurance"}, {"id": 80, "q": "Do I need insurance for a domestic trip?", "keys": ["insurance", "domestic", "usa", "home", "need", "trip"], "a": "We recommend it for almost every trip, especially cruises and international travel — medical cover abroad and cancellation protection are the two pieces that matter most. Email book@ocltravel.com and we'll explain the options for your trip.", "sales": false, "topic": "Insurance"}, {"id": 81, "q": "Can I travel with a wheelchair?", "keys": ["wheelchair", "mobility", "accessible", "disability", "access"], "a": "Generally yes — tell us your needs early so we can check accessible cabins, hotels and transfers with the suppliers. Mention it in your trip brief (#brief) or email book@ocltravel.com.", "sales": false, "topic": "Booking"}, {"id": 82, "q": "Are there accessible cabins on cruises?", "keys": ["accessible", "cabin", "wheelchair", "mobility", "cruise", "disability"], "a": "Generally yes — most lines offer accessible cabins, but availability is limited and varies by ship, so tell us early. Mention it in your trip brief (#brief) or email book@ocltravel.com.", "sales": false, "topic": "Cruises"}, {"id": 83, "q": "Can you cater for dietary requirements?", "keys": ["dietary", "food", "allergy", "vegetarian", "vegan", "gluten", "meal"], "a": "Generally yes — most cruise lines and hotels cater for dietary requirements if they're told in advance. Tell us in your trip brief (#brief) or email book@ocltravel.com and we'll pass it to the supplier.", "sales": false, "topic": "Booking"}, {"id": 84, "q": "What if I have a medical condition?", "keys": ["medical", "condition", "health", "illness", "medication"], "a": "Tell us in your trip brief so we can plan around it — the right ship, cabin position and insurance matter more than anything. Your details stay between you and your advisor. Start the trip brief (#brief).", "sales": false, "topic": "Booking"}, {"id": 85, "q": "Is the Yucatán trip suitable for older travellers?", "keys": ["yucatán", "older", "elderly", "senior", "age", "suitable", "pace"], "a": "Generally yes — the pace can be shaped around you, with a private guide, hacienda lunches and cenote swims at your own speed. Tell us in the trip brief (#brief) and we'll plan it accordingly.", "sales": false, "topic": "Journeys"}, {"id": 86, "q": "Are cruises good for kids?", "keys": ["kids", "children", "family", "cruise", "young", "baby"], "a": "Generally yes — most larger ships have kids' clubs, pools and family activities. The right line depends on your kids' ages, so tell us in the trip brief (#brief) and we'll match the ship to your family.", "sales": false, "topic": "Cruises"}, {"id": 87, "q": "What age can kids cruise?", "keys": ["age", "kids", "children", "baby", "infant", "minimum", "cruise"], "a": "It varies by cruise line — generally most lines welcome babies from around 6 months, and some sailings set a higher minimum. Email book@ocltravel.com with your kids' ages and we'll confirm for your sailing.", "sales": false, "topic": "Cruises"}, {"id": 88, "q": "Is the Maldives suitable for families?", "keys": ["maldives", "family", "kids", "children", "resort", "suitable"], "a": "Yes — our Maldives journey matches the resort to your style: quiet, diving, or family, with transfers and meal plans sorted up front. Send a trip brief (#brief) or email book@ocltravel.com with your family details.", "sales": false, "topic": "Journeys"}, {"id": 89, "q": "Is Mérida suitable for kids?", "keys": ["mérida", "kids", "children", "family", "yucatán", "suitable"], "a": "Generally yes — cenote swims, Maya ruins, flamingos at Celestún and Mérida's food scene work well at a family pace. Tell us your kids' ages in the trip brief (#brief) and we'll shape the days around them.", "sales": false, "topic": "Journeys"}, {"id": 90, "q": "Can you plan a family trip with kids of different ages?", "keys": ["family", "kids", "ages", "different", "children", "plan"], "a": "Yes — family trips with mixed ages are exactly the kind of trip we shape around who you're travelling with. Send a trip brief (#brief) or email book@ocltravel.com with your kids' ages and dates.", "sales": true, "topic": "Journeys", "to": "book@ocltravel.com", "subj": "Family trip with kids", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you plan a family trip with kids of different ages?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 91, "q": "What honeymoon destinations do you recommend?", "keys": ["honeymoon", "destinations", "recommend", "romantic", "where"], "a": "Our journeys suit honeymoons well — a Caribbean cruise, the Maldives, or the Greek Isles with caldera-view stays in Oia or Fira. Send a trip brief (#brief) or email book@ocltravel.com and we'll shape one around your dates.", "sales": false, "topic": "Groups"}, {"id": 92, "q": "Do honeymoons get any special perks?", "keys": ["honeymoon", "perks", "special", "extras", "romantic", "upgrade"], "a": "Sometimes — perks vary by cruise line and hotel, and telling them it's a honeymoon when you book is what triggers them. Email book@ocltravel.com with your trip in mind and we'll check what's offered.", "sales": false, "topic": "Groups"}, {"id": 93, "q": "Can you plan a honeymoon cruise?", "keys": ["honeymoon", "cruise", "plan", "romantic", "sailing"], "a": "Yes — a honeymoon cruise is one of our groups & celebrations trips, with the cabin, dining and details handled for you. Send a trip brief (#brief) or email book@ocltravel.com with your dates.", "sales": true, "topic": "Groups", "to": "book@ocltravel.com", "subj": "Honeymoon cruise", "body": "Hi OCL Travel,\n\nI'd like help with this: Can you plan a honeymoon cruise?\n\nMy details:\nName: \nTravel dates: \nParty size: \n\nThanks!"}, {"id": 94, "q": "What are your office hours?", "keys": ["hours", "open", "office hours", "when", "call", "time"], "a": "We don't publish office hours on the site — email anytime (general enquiries to info@ocltravel.com, bookings to book@ocltravel.com, support to support@ocltravel.com) or call the office on +1 (305) 814-7009.", "sales": false, "topic": "Contact", "to": "info@ocltravel.com", "subj": "General enquiry", "body": "Hi OCL Travel,\n\nI have a question: What are your office hours?\n\nMy details:\nName: \n\nThanks!"}, {"id": 95, "q": "What is the best way to reach you?", "keys": ["reach", "contact", "best way", "get in touch", "talk", "speak"], "a": "General enquiries go to info@ocltravel.com, bookings to book@ocltravel.com, and support to support@ocltravel.com — or call the office on +1 (305) 814-7009. Pick the inbox that fits, and a real advisor replies.", "sales": false, "topic": "Contact"}, {"id": 96, "q": "Can I send you a message on WhatsApp?", "keys": ["whatsapp", "message", "chat", "text", "messenger"], "a": "Our site lists email and phone — general enquiries to info@ocltravel.com, bookings to book@ocltravel.com, support to support@ocltravel.com, or call the office on +1 (305) 814-7009. Email is the surest way to reach a real advisor.", "sales": false, "topic": "Contact"}, {"id": 97, "q": "Who is OCL Travel?", "keys": ["who", "about", "agency", "ocl", "company", "what is"], "a": "OCL Travel — Ocean Crown and Latitudes Travel LLC — is a travel agency for people who'd rather have a trip designed than a tab left open: cruises, island escapes and land journeys, researched and pieced together by a real advisor. Email info@ocltravel.com with any general question.", "sales": false, "topic": "About OCL", "to": "info@ocltravel.com", "subj": "General enquiry — about OCL Travel", "body": "Hi OCL Travel,\n\nI have a question: Who is OCL Travel?\n\nMy details:\nName: \n\nThanks!"}, {"id": 98, "q": "Do you work with all cruise lines?", "keys": ["cruise lines", "all", "which", "lines", "companies", "work with"], "a": "We plan ocean and river sailings across the major lines — our current offers cover Virgin Voyages, Norwegian, Uniworld, Princess, Oceania, Lindblad, HX and Regent Seven Seas, and we can check others too. Email book@ocltravel.com with the line you have in mind.", "sales": false, "topic": "About OCL"}, {"id": 99, "q": "What is the best month to visit the Maldives?", "keys": ["maldives", "best month", "when", "season", "weather", "monsoon"], "a": "November to April is the dry northeast monsoon — the best months for our Maldives, Slowly journey. Send a trip brief (#brief) or email book@ocltravel.com with your dates.", "sales": false, "topic": "Journeys"}, {"id": 100, "q": "What is the best month to visit the Riviera Maya?", "keys": ["riviera maya", "best month", "when", "season", "sargassum", "weather"], "a": "November to April is best for our Riviera Maya & Cenote Country journey, outside sargassum season's peak. Send a trip brief (#brief) or email book@ocltravel.com with your dates.", "sales": false, "topic": "Journeys"}];
+        var POPULAR = [1, 4, 38, 13, 30, 9, 7, 12];
+        var BRIEF = '<br /><a class="faqbot-brief" href="#brief">Start your trip brief</a>';
+        var pendingSignup = null;
+
+        var launch = document.getElementById('faqbotLaunch');
+        var panel = document.getElementById('faqbotPanel');
+        var closeBtn = document.getElementById('faqbotClose');
+        var msgs = document.getElementById('faqbotMsgs');
+        var chipsBox = document.getElementById('faqbotChips');
+        var topicSel = document.getElementById('faqbotTopic');
+        var topicsLabel = document.getElementById('faqbotTopicsLabel');
+        var form = document.getElementById('faqbotForm');
+        var input = document.getElementById('faqbotInput');
+        var greeted = false;
+
+        function esc(s) {
+          return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        function mailHref(to, subj, body) {
+          return 'mailto:' + to + '?subject=' + encodeURIComponent(subj || '') + '&body=' + encodeURIComponent(body || '');
+        }
+        function isSignup(item) {
+          return !!item.signup || item.subj === 'Special offers signup';
+        }
+        function isEmail(s) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+        }
+
+        function linkify(item) {
+          var raw = item.a;
+          var hasBrief = raw.indexOf('#brief') !== -1;
+          var hasOffers = raw.indexOf('#offers') !== -1;
+          var t = esc(raw);
+          t = t.replace(/\s*\(#(?:brief|offers|journeys|services|contact|spotlight)\)/g, '');
+          t = t.replace(/#offers\b/g, '<a href="#offers">offers section</a>');
+          t = t.replace(/#journeys\b/g, '<a href="#journeys">journeys section</a>');
+          t = t.replace(/#brief\b/g, '<a href="#brief">trip brief</a>');
+          t = t.replace(/#services\b/g, '<a href="#services">services section</a>');
+          t = t.replace(/#contact\b/g, '<a href="#contact">contact section</a>');
+          t = t.replace(/([A-Za-z0-9._%+-]+@ocltravel\.com)/g, '<a href="mailto:$1">$1</a>');
+          t = t.replace(/\+1 \(305\) 814-7009/g, '<a href="tel:+13058147009">+1 (305) 814-7009</a>');
+          if (hasBrief) { t += BRIEF; }
+          else if (hasOffers) { t += '<br /><a class="faqbot-brief" href="#offers">See the current offers</a>'; }
+          return t;
+        }
+
+        function answerHtml(item) {
+          var html = linkify(item);
+          if (isSignup(item)) {
+            pendingSignup = item;
+            html += '<form class="faqbot-signup" data-signup="' + item.id + '">'
+              + '<input type="email" name="email" required placeholder="Your email address" aria-label="Your email address" autocomplete="email" />'
+              + '<button type="submit">Sign me up</button></form>'
+              + '<p class="faqbot-note">Enter your email and we\u2019ll prepare a signup message to info@ocltravel.com \u2014 you send it from your own email app, and we add you to the special offers list.</p>';
+          } else if (item.to) {
+            html += '<br /><a class="faqbot-mail" href="' + mailHref(item.to, item.subj, item.body) + '">Email ' + item.to + ' about this</a>';
+            if (item.sales) {
+              html += '<p class="faqbot-note">Opens your email app with a message ready to fill in \u2014 add your name, dates and party size, then send.</p>';
+            }
+          }
+          return html;
+        }
+
+        function completeSignup(email, item) {
+          var body = (item.body || '').split('[your email address]').join(email);
+          addMsg('Thanks \u2014 your signup is ready. Tap the button to open it in your email app and press send, and we\u2019ll add ' + esc(email) + ' to the special offers list.'
+            + '<br /><a class="faqbot-mail" href="' + mailHref('info@ocltravel.com', 'Special offers signup', body) + '">Send signup email to info@ocltravel.com</a>', 'bot', true);
+        }
+
+        function routeLink(to, label, subj) {
+          return '<a class="faqbot-mail" href="' + mailHref(to, subj, 'Hi OCL Travel,\n\nMy question:\n\n\nMy details:\nName: \n\nThanks!') + '">' + label + '</a>';
+        }
+        var FALLBACK = 'I don\u2019t have a set answer for that one yet \u2014 but the team can help. Pick the inbox that fits:'
+          + '<br />' + routeLink('book@ocltravel.com', 'Bookings &amp; quotes \u2014 book@ocltravel.com', 'Booking or quote enquiry')
+          + routeLink('support@ocltravel.com', 'Help with a trip \u2014 support@ocltravel.com', 'Support request')
+          + routeLink('info@ocltravel.com', 'General enquiries \u2014 info@ocltravel.com', 'General enquiry')
+          + '<br />Or call the office on <a href="tel:+13058147009">+1 (305) 814-7009</a>.' + BRIEF;
+
+        // Topic filter + question chips
+        var topics = [];
+        FAQS.forEach(function (item) { if (topics.indexOf(item.topic) === -1) { topics.push(item.topic); } });
+        topics.sort();
+        topics.forEach(function (t) {
+          var o = document.createElement('option');
+          o.value = t;
+          o.textContent = t;
+          topicSel.appendChild(o);
+        });
+        function renderChips() {
+          var val = topicSel.value;
+          var list;
+          if (val === 'popular') { list = FAQS.filter(function (i) { return POPULAR.indexOf(i.id) !== -1; }); }
+          else if (val === 'all') { list = FAQS; }
+          else { list = FAQS.filter(function (i) { return i.topic === val; }); }
+          topicsLabel.textContent = val === 'popular' ? 'Popular questions' : (val === 'all' ? 'All questions' : val);
+          chipsBox.innerHTML = '';
+          list.forEach(function (item) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.textContent = item.q;
+            b.addEventListener('click', function () { ask(item.q, item); });
+            chipsBox.appendChild(b);
+          });
+          chipsBox.scrollTop = 0;
+        }
+        topicSel.addEventListener('change', renderChips);
+        renderChips();
+
+        function addMsg(text, who, isHtml) {
+          var d = document.createElement('div');
+          d.className = 'faqbot-msg ' + who;
+          if (isHtml) { d.innerHTML = text; } else { d.textContent = text; }
+          msgs.appendChild(d);
+          msgs.scrollTop = msgs.scrollHeight;
+          return d;
+        }
+
+        function answerFor(text) {
+          var t = ' ' + text.toLowerCase().replace(/[^a-z0-9\u00e0-\u00ff ]/g, ' ') + ' ';
+          var words = t.split(/\s+/);
+          var best = null, bestScore = 0;
+          FAQS.forEach(function (item) {
+            var score = 0;
+            item.keys.forEach(function (k) {
+              if (t.indexOf(' ' + k + ' ') !== -1) {
+                score += k.indexOf(' ') !== -1 ? 3 : (k.length >= 4 ? 2 : 1);
+              }
+            });
+            var qw = item.q.toLowerCase().replace(/[^a-z0-9\u00e0-\u00ff ]/g, ' ').split(/\s+/);
+            qw.forEach(function (w) {
+              if (w.length >= 3 && words.indexOf(w) !== -1) { score += 1; }
+            });
+            if (score > bestScore) { bestScore = score; best = item; }
+          });
+          return bestScore >= 2 ? best : null;
+        }
+
+        function ask(text, known) {
+          addMsg(text, 'user', false);
+          var trimmed = text.trim();
+          if (!known && pendingSignup && isEmail(trimmed)) {
+            var sItem = pendingSignup;
+            pendingSignup = null;
+            setTimeout(function () { completeSignup(trimmed, sItem); }, 250);
+            return;
+          }
+          var item = known || answerFor(text);
+          setTimeout(function () {
+            if (item) { addMsg(answerHtml(item), 'bot', true); }
+            else { addMsg(FALLBACK, 'bot', true); }
+          }, 250);
+        }
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var v = input.value.trim();
+          if (!v) return;
+          input.value = '';
+          ask(v, null);
+        });
+
+        // Special-offers signup forms live inside bot messages.
+        msgs.addEventListener('submit', function (e) {
+          var f = e.target;
+          if (!f.classList || !f.classList.contains('faqbot-signup')) { return; }
+          e.preventDefault();
+          var emInput = f.querySelector('input[type="email"]');
+          var em = emInput.value.trim();
+          if (!isEmail(em)) { emInput.focus(); return; }
+          var id = parseInt(f.getAttribute('data-signup'), 10);
+          var item = pendingSignup;
+          FAQS.forEach(function (i) { if (i.id === id) { item = i; } });
+          if (!item) { return; }
+          pendingSignup = null;
+          addMsg(em, 'user', false);
+          setTimeout(function () { completeSignup(em, item); }, 250);
+        });
+
+        function openPanel() {
+          panel.classList.add('open');
+          panel.setAttribute('aria-hidden', 'false');
+          launch.setAttribute('aria-expanded', 'true');
+          if (!greeted) {
+            greeted = true;
+            addMsg('Hello \u2014 I answer the questions we get asked most about planning and booking with OCL Travel, from costs and cabins to offers and documents. Browse the topics below or type your own question \u2014 and if you\u2019d like a quote, I can start an email to the team for you.', 'bot', false);
+          }
+          setTimeout(function () { input.focus(); }, 60);
+        }
+        function closePanel() {
+          panel.classList.remove('open');
+          panel.setAttribute('aria-hidden', 'true');
+          launch.setAttribute('aria-expanded', 'false');
+          launch.focus();
+        }
+        launch.addEventListener('click', openPanel);
+        closeBtn.addEventListener('click', closePanel);
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && panel.classList.contains('open')) { closePanel(); }
+        });
+        // In-chat links to page sections (e.g. the trip brief) close the panel so the section is visible.
+        msgs.addEventListener('click', function (e) {
+          var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+          if (a) { closePanel(); }
+        });
+      })();
     </script>
   </body>
 </html>
