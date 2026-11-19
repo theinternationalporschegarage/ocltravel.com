@@ -193,6 +193,36 @@
       .pkg-chip:hover { border-color: var(--gold); }
       .partners-note { margin-top: 22px; color: var(--ink-soft); font-size: 0.95rem; max-width: 68ch; }
 
+      /* ---------- travel forum ---------- */
+      .forum-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+      .forum-card {
+        background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--gold);
+        border-radius: 14px; box-shadow: var(--shadow); padding: 22px;
+        display: flex; flex-direction: column; gap: 10px;
+      }
+      .forum-card h3 { font-size: 1.4rem; line-height: 1.25; }
+      .forum-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+      .forum-tag {
+        font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+        color: #001938; background: var(--gold); border-radius: 999px; padding: 4px 11px;
+      }
+      .forum-date { font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
+      .forum-teaser { color: var(--ink-soft); font-size: 0.95rem; }
+      .forum-card details { border-top: 1px dashed var(--line); padding-top: 6px; }
+      .forum-card summary {
+        cursor: pointer; font-weight: 700; color: var(--sea); padding: 10px 2px; min-height: 44px;
+        display: flex; align-items: center; font-size: 0.95rem; list-style: none;
+      }
+      .forum-card summary::-webkit-details-marker { display: none; }
+      .forum-card summary::after { content: "+"; margin-left: auto; font-size: 1.3rem; color: var(--coral-ink); line-height: 1; }
+      .forum-card details[open] summary::after { content: "−"; }
+      .forum-full { color: var(--ink-soft); font-size: 0.95rem; margin-top: 4px; }
+      .forum-points-head { font-family: "Public Sans", sans-serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--coral-ink); margin-top: 16px; }
+      .forum-card ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.92rem; }
+      .forum-card ul li { margin: 4px 0; }
+      .forum-join { margin-top: auto; padding-top: 14px; }
+      .forum-join .btn { width: 100%; }
+
       /* ---------- cruise offers ---------- */
       .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
       .offer-card {
@@ -502,6 +532,7 @@
         <a href="#journeys">Journeys</a>
         <a href="#offers">Cruise offers</a>
         <a href="#partners">Partners</a>
+        <a href="#forum">Forum</a>
         <a href="#services">Services</a>
         <a href="#how">How it works</a>
         <a href="#contact">Contact</a>
@@ -1204,6 +1235,107 @@
       })();
       </script>
 
+
+      <!-- Travel Forum -->
+      <section id="forum">
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>Travel Forum</h2>
+            <p>Real travel questions, debated by real travellers. This is a static page, so replies happen on our Facebook Page — tap &lsquo;Join the discussion&rsquo; under any topic to add your voice.</p>
+          </div>
+          <div class="forum-grid">
+            <article class="forum-card">
+              <div class="forum-meta"><span class="forum-tag">Cruises | First-Time Travellers</span><span class="forum-date"><time datetime="2026-11-19">19 November 2026</time></span></div>
+              <h3>First cruise? The 10 questions every first-timer is afraid to ask</h3>
+              <p class="forum-teaser">Booking your first cruise comes with a whole new vocabulary — GTY cabins, Pullman beds, muster drills — and nobody wants to ask the &lsquo;silly&rsquo; questions.</p>
+              <details>
+                <summary>Read the discussion &amp; talking points</summary>
+                <p class="forum-full">Booking your first cruise comes with a whole new vocabulary — GTY cabins, Pullman beds, muster drills — and nobody wants to ask the &lsquo;silly&rsquo; questions. A first-timer guide making the rounds on Facebook this week answers the ten questions new cruisers ask most, from whether the tap water is safe to whether the main dining room really is free. What did you wish someone had told you before your first sailing?</p>
+                <p class="forum-points-head">Starter talking points</p>
+                <ul>
+                  <li>Is regular coffee really included, and what costs extra?</li>
+                  <li>GTY cabins: the cheaper gamble — would you let the cruise line pick your room?</li>
+                  <li>Phone at sea: Airplane Mode, Wi-Fi packages, and the roaming bill horror stories</li>
+                  <li>What not to pack: towels, hairdryers, and the rest</li>
+                </ul>
+              </details>
+              <div class="forum-join"><a class="btn btn-sea" href="https://www.facebook.com/profile.php?id=61596282947248" target="_blank" rel="noopener">Join the discussion</a></div>
+            </article>
+
+            <article class="forum-card">
+              <div class="forum-meta"><span class="forum-tag">Travel Protection</span><span class="forum-date"><time datetime="2026-11-19">19 November 2026</time></span></div>
+              <h3>Missed the ship: is travel protection actually worth it?</h3>
+              <p class="forum-teaser">This week, flight ground stops left travellers stranded on their way to their cruises — including one family who missed a birthday sailing and a singer who lost a $4,200 Royal Caribbean trip.</p>
+              <details>
+                <summary>Read the discussion &amp; talking points</summary>
+                <p class="forum-full">This week, flight ground stops left travellers stranded on their way to their cruises — including one family who missed a birthday sailing and a singer who lost a $4,200 Royal Caribbean trip. Facebook travel groups are full of the same debate: is travel protection a waste of money, or the boring purchase you&rsquo;ll be glad you made? Where do you stand — and has it ever saved your trip?</p>
+                <p class="forum-points-head">Starter talking points</p>
+                <ul>
+                  <li>Fly in a day early: the one tip every agent repeats right now</li>
+                  <li>Medical evacuation at sea can cost around $25,000 — what does a policy actually cover?</li>
+                  <li>Missed ports and delayed flights: what got reimbursed, what didn&rsquo;t</li>
+                  <li>Annual family cover vs per-trip: the maths</li>
+                </ul>
+              </details>
+              <div class="forum-join"><a class="btn btn-sea" href="https://www.facebook.com/profile.php?id=61596282947248" target="_blank" rel="noopener">Join the discussion</a></div>
+            </article>
+
+            <article class="forum-card">
+              <div class="forum-meta"><span class="forum-tag">Cruises</span><span class="forum-date"><time datetime="2026-11-19">19 November 2026</time></span></div>
+              <h3>Drink package: worth it, or the biggest cruise upsell?</h3>
+              <p class="forum-teaser">Few cruise topics split Facebook groups like the drink package.</p>
+              <details>
+                <summary>Read the discussion &amp; talking points</summary>
+                <p class="forum-full">Few cruise topics split Facebook groups like the drink package. Some cruisers do the break-even maths and swear it pays for itself by lunchtime; others say port-heavy itineraries and light drinking make pay-as-you-go the clear winner. With packages now running $60–$100+ a day, the question is sharper than ever — did you buy it, and would you again?</p>
+                <p class="forum-points-head">Starter talking points</p>
+                <ul>
+                  <li>The break-even maths: how many drinks a day does it really take?</li>
+                  <li>Specialty coffee, sodas and bottled water count too — do they tip the balance?</li>
+                  <li>Port days vs sea days: when the package earns its keep</li>
+                  <li>Casino perks and free-drink offers: did they change your answer?</li>
+                </ul>
+              </details>
+              <div class="forum-join"><a class="btn btn-sea" href="https://www.facebook.com/profile.php?id=61596282947248" target="_blank" rel="noopener">Join the discussion</a></div>
+            </article>
+
+            <article class="forum-card">
+              <div class="forum-meta"><span class="forum-tag">All-Inclusive</span><span class="forum-date"><time datetime="2026-11-19">19 November 2026</time></span></div>
+              <h3>Preferred Club upgrade for $1,300 — would you pay it?</h3>
+              <p class="forum-teaser">A traveller in a Secrets resort group asked the question that pulled 60+ replies this week: is a $1,300 Preferred Club upgrade for two people worth it?</p>
+              <details>
+                <summary>Read the discussion &amp; talking points</summary>
+                <p class="forum-full">A traveller in a Secrets resort group asked the question that pulled 60+ replies this week: is a $1,300 Preferred Club upgrade for two people worth it? Better rooms, a quiet lounge, top-shelf drinks — or money better spent on excursions and spa days? And with resorts quietly trimming club perks, does the upgrade still deliver what it used to?</p>
+                <p class="forum-points-head">Starter talking points</p>
+                <ul>
+                  <li>What the upgrade actually got you — lounge, room location, premium drinks</li>
+                  <li>Club perks are shrinking: robes and slippers now for timeshare members only?</li>
+                  <li>The alternative: what $1,300 buys in excursions, dining and spa</li>
+                  <li>Which resorts do the upgrade best — and which to skip?</li>
+                </ul>
+              </details>
+              <div class="forum-join"><a class="btn btn-sea" href="https://www.facebook.com/profile.php?id=61596282947248" target="_blank" rel="noopener">Join the discussion</a></div>
+            </article>
+
+            <article class="forum-card">
+              <div class="forum-meta"><span class="forum-tag">Flights &amp; Stays</span><span class="forum-date"><time datetime="2026-11-19">19 November 2026</time></span></div>
+              <h3>Cheap flight &lsquo;hacks&rsquo; — real savings or travel myths?</h3>
+              <p class="forum-teaser">A viral video this week promised cheaper flights if you book on Tuesdays, use incognito mode, and search at 3–4 AM — and the reaction was fierce.</p>
+              <details>
+                <summary>Read the discussion &amp; talking points</summary>
+                <p class="forum-full">A viral video this week promised cheaper flights if you book on Tuesdays, use incognito mode, and search at 3–4 AM — and the reaction was fierce. Some travellers swear by the tricks; others call them myths, pointing to €16.99 fares that turn into €375 returns once bags and seats are added. What&rsquo;s actually worked for you when hunting cheap flights?</p>
+                <p class="forum-points-head">Starter talking points</p>
+                <ul>
+                  <li>Tuesday bookings and 3 AM searches: myth, or did it work for you?</li>
+                  <li>Incognito mode and VPNs: do prices really change?</li>
+                  <li>The headline fare trap: baggage, seats and return legs</li>
+                  <li>Your best real flight deal — and how you found it</li>
+                </ul>
+              </details>
+              <div class="forum-join"><a class="btn btn-sea" href="https://www.facebook.com/profile.php?id=61596282947248" target="_blank" rel="noopener">Join the discussion</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
 
       <!-- Special offers signup -->
       <section id="signup" style="padding-top:36px">
